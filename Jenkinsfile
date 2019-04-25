@@ -11,6 +11,9 @@ pipeline {
         stage('DeployToStaging') {
             when {
                 branch 'master'
+            expression {
+                return env.GIT_BRANCH == "origin/master"
+            }
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
