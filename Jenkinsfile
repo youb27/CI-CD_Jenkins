@@ -10,7 +10,6 @@ pipeline {
         }
         stage('DeployToStaging') {
             when {
-                branch 'master'
             expression {
                 return env.GIT_BRANCH == "origin/master"
             }
